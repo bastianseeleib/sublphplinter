@@ -7,7 +7,7 @@ class phperrors(sublime_plugin.EventListener):
 
 			view.erase_regions("phperror");
 
-			f = os.popen("php -l "+view.file_name())
+			f = os.popen("php -l "+view.file_name()+" 2>&1")
 			errors = f.read()
 
 			matchObj = re.search(r"([0-9].*)", errors, re.I|re.M)
